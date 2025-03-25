@@ -1,84 +1,81 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
+import { AiOutlineArrowDown, AiOutlineArrowUp } from "react-icons/ai";
 import styles from '../styles/components/About.module.scss';
 
 const About = () => {
   const { t } = useTranslation();
-  const [activeIndex, setActiveIndex] = useState(null);
 
-  const sections = [
-    { number: '01', text: t('section_01') },
-    { number: '02', text: t('section_02') },
-    { number: '03', text: t('section_03') },
-    { number: '04', text: t('section_04') }
-  ];
-
-  const handleScroll = () => {
-    const sectionElements = document.querySelectorAll(`.${styles.section}`);
-    const windowHeight = window.innerHeight;
-    let indexToSet = null;
-
-    sectionElements.forEach((section, index) => {
-      const rect = section.getBoundingClientRect();
-      const sectionTop = rect.top;
-      const sectionBottom = rect.bottom;
-
-      if (sectionTop < windowHeight / 2 && sectionBottom > windowHeight / 2) {
-        indexToSet = index;
-      }
-    });
-
-    setActiveIndex(indexToSet);
+  const scrollToNextSection = () => {
+    const nextSection = document.getElementById('skills');
+    if (nextSection) {
+      nextSection.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
-    handleScroll();
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
+  const scrollToPreviousSection = () => {
+    const prevSection = document.getElementById('hero');
+    if (prevSection) {
+      prevSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   return (
     <section id="about" className={styles.about}>
-      <div>
-        <h1 className={styles.aboutTitle}>{t('about_title')}</h1>
-        <p className={styles.aboutLine}>{t('about_line1')} <img src='/images/logo-name.png' alt='Logo'></img> {t('about_line2')}</p>
+      <h2 className={styles.sectionTitle}>{t('about')}</h2>
+      
+      <div className={styles.contentContainer}>
+        <div className={styles.leftText}>
+          <p><span className={styles.number}>01.</span> <strong>{t('formation1')}</strong><br />
+            {t('formation2')}
+          </p>
+          <p><span className={styles.number}>02.</span> <strong>{t('passion1')}</strong><br />
+            {t('passion2')}
+          </p>
+        </div>
+
+        <div className={styles.imageContainer}>
+          <img src="/images/imgAbout.png" alt="Image description" className={styles.image} />
+        </div>
+
+        <div className={styles.rightText}>
+          <p><span className={styles.number}>03.</span> <strong>{t('leadership1')}</strong><br />
+            {t('leadership2')}
+          </p>
+          <p><span className={styles.number}>04.</span> <strong>{t('ambition1')}</strong><br />
+            {t('ambition2')}
+          </p>
+        </div>
       </div>
 
-      {sections.map((section, index) => (
-        <div
-          key={index}
-          className={`${styles.section} ${index === activeIndex ? styles.active : ''}`}
-        >
-          <div className={styles.sectionNumber}>{section.number}</div>
-          <div className={styles.sectionContent}>
-            <p
-              className={styles.sectionText}
-              dangerouslySetInnerHTML={{ __html: section.text }}
-            />
-          </div>
-          {index < sections.length - 1 && <hr className={styles.separator} />}
-        </div>
-      ))}
       <div className={styles.buttonContainer}>
-        <a href="/pdf/cv-FR.pdf" download>
+        <a href="/pdf/CV_FR.pdf" download>
           <button className={styles.btn}>
             <span className={styles.text}>{t('french_cv')}</span>
           </button>
         </a>
-        <a href="/pdf/second.pdf" download>
+        <a href="/pdf/CV_EN.pdf" download>
           <button className={styles.btn}>
             <span className={styles.text}>{t('english_cv')}</span>
           </button>
         </a>
       </div>
+
+        {/* Bouton pour remonter */}
+        <button className={styles.upButton} onClick={scrollToPreviousSection}>
+          < AiOutlineArrowUp />
+        </button>
+
+        {/* Bouton pour descendre */}
+        <a className={styles.menuLink} href="#skills" onClick={scrollToNextSection}>
+          {t('scroll2')} <AiOutlineArrowDown className={styles.arrowIcon} />
+        </a>
     </section>
   );
 };
 
 export default About;
+
 
 
 

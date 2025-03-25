@@ -1,5 +1,6 @@
 body {
   cursor: none;
+  background-color: #FFFCE8;
 }
 
 section {
@@ -7,5 +8,24 @@ section {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  min-height: 100vh;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+html, body {
+  overflow: hidden; // Désactive le scroll
+}
+
+#projects {
+  overflow-y: auto; /* Active le scroll vertical */
+  max-height: 100vh; /* S'assure que la section ne dépasse pas la hauteur de la fenêtre */
+  width: 100%;
+}
+
+@media (max-width: 1024px) { 
+  html, body {
+    overflow: auto; // Réactive le scroll sur mobiles/tablettes
+  }
 }
 

@@ -1,99 +1,85 @@
-@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@200;400;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bagel+Fat+One&display=swap');
 @import '../../styles/variables.scss';
 
-@font-face {
-  font-family: 'Title';
-  src: url('/fonts/Nectarine DEMO.ttf') format('truetype');
-}
-
 .about {
+  position: relative;
   font-family: 'Raleway', sans-serif;
   width: 100%;
-  padding: 0 2rem;
   box-sizing: border-box;
   cursor: none;
-  margin-top: 25vh;
+  margin-top: -2vh;
 }
 
-.aboutTitle {
-  font-family: 'Title', sans-serif;
-  font-size: 5rem;
-  color: $nav-title-color;
-  margin-bottom: -2rem;
-  text-align: center;
-
-  @media (max-width: 480px) {
-    font-size: 4rem;
-    text-align: center;
-  }
-}
-
-.aboutLine {
-  font-family: 'Raleway', sans-serif;
-  font-size: 1.5rem;
-  text-align: center;
-  color: $text-color;
-
-  img {
-    width: 20%;
-    margin-left: 0.6rem;
-    margin-right: 0.6rem;
-
-    @media (max-width: 480px) {
-      width: 50%;
-    }
-
-    @media (max-width: 768px) {
-      width: 40%;
-    }
-
-    @media (max-width: 1024px) {
-      width: 30%;
-    }
-  }
-}
-
-
-/* SECTIONS */
-.section {
+.contentContainer {
   display: flex;
-  flex-direction: column;
-  width: 90%;
-  margin: 1rem 0;
-  transition: transform 0.3s ease;
-}
-
-.section.active {
-  transform: scale(1.1);
-}
-
-.section:hover {
-  transform: scale(1.1);
-}
-
-.sectionNumber {
-  font-size: 3rem;
-  font-weight: bold;
-  color: $nav-title-color;
-  margin-bottom: 1rem;
-}
-
-.sectionContent {
+  align-items: center;
+  justify-content: center;
   width: 100%;
+  max-width: 1200px;
 }
 
-.sectionText {
-  font-size: 1.1rem;
-  color: $text-color;
-  line-height: 1.6;
-  text-align: justify;
+.sectionTitle {
+  font-family: "Bagel Fat One", system-ui;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 80px;
+  color: #FF7E33;
+  margin-bottom: 0%;
 }
 
-.separator {
-  width: 100%;
-  border: none;
-  border-bottom: 0.5px solid $nav-title-color;
-  margin: 2rem 0;
+.leftText, .rightText {
+  width: 50%;
+  padding: 20px;
+
+  p {
+    font-size: 18px;
+    line-height: 1.6;
+    text-align: justify;
+    margin: 35px auto 0;
+    max-width: 100%;
+    color: $text-color;
+
+    strong {
+      color: #9E89B6;
+      font-size: 20px;
+    }
+  }
+}
+
+.number {
+  color: #FF7E33;
+  font-weight: 800;
+  font-size: 22px;
+}
+
+.imageContainer {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 3%;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: 28px;
+    right: 28px;
+    bottom: -10px;
+    background-color: #BAD381;
+    z-index: 0;
+  }
+
+  .image {
+    width: 80%;
+    max-width: 600px;
+    height: auto;
+    position: relative;
+    z-index: 1;
+    display: block;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.33);
+  }
 }
 
 
@@ -102,7 +88,7 @@
   display: flex;
   justify-content: center;
   gap: 3rem;
-  margin-top: 4rem;
+  margin-top: 2%;
 
   a {
     text-decoration: none;
@@ -111,36 +97,167 @@
 
 .btn {
   border: none;
-  width: 12em;
-  height: 4em;
+  width: 10em;
+  height: 3em;
   border-radius: 3em;
-  border: 1px solid $nav-title-color;
+  border: 1px solid #FF7E33;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 12px;
   background: none;
   cursor: none;
-  transition: all 450ms ease-in-out;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px #9e89b686;
 }
 
 .text {
   font-weight: 400;
-  color: $nav-title-color;
+  color: #FF7E33;
   font-size: medium;
 }
 
-.btn:hover {
-  background: linear-gradient(0deg,#b293f0,#b4a0f5);
-  box-shadow: inset 0px 1px 0px 0px rgba(255, 255, 255, 0.4),
-  inset 0px -4px 0px 0px rgba(249, 208, 253, 0.301),
-  0px 0px 0px 4px rgba(255, 225, 251, 0.586),
-  0px 0px 180px 0px #9b27f5;
-  transform: translateY(-2px);
+
+/* Style pour le lien avec hover */
+.menuLink {
+  color: #FF7E33;
+  line-height: 2;
+  position: relative;
+  margin-top: 30px;
+  text-decoration: none;
+  font-weight: 400;
+  cursor: none;
 }
 
-.btn:hover .text {
-  color: white;
+.menuLink::before {
+  content: '';
+  width: 100%;
+  height: 1px;
+  border-radius: 2px;
+  background-color: #FF7E33;
+  position: absolute;
+  bottom: -.1rem;
+  left: 0;
+  transition: transform .4s, opacity .4s;
+  opacity: 0;
+}
+
+.menuLink:hover::before {
+  transform: translateY(-.25rem);
+  opacity: 1;
+}
+
+.arrowIcon {
+  position: relative;
+  top: 2px;
+  font-size: 1em;
+}
+
+.upButton {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  background: #BAD381;
+  border: none;
+  cursor: none;
+  font-size: 2rem;
+  color: #FFFCE8;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Media Queries pour la responsivité */
+/* Pour les écrans de moins de 768px (tablettes et mobiles) */
+@media (max-width: 768px) {
+  .sectionTitle {
+    font-size: 50px;
+  }
+
+  .leftText, .rightText {
+    width: 90%;
+    padding: 15px;
+
+    p {
+      font-size: 16px;
+      margin: 20px auto 0;
+    }
+  }
+
+  .contentContainer {
+    flex-direction: column;
+    padding: 10px;
+  }
+
+  .imageContainer {
+    margin-top: 20px;
+    width: 40%;
+    padding: 10px;
+  }
+
+  .image {
+    width: 90%;
+    max-width: 100%;
+  }
+
+  .menuLink {
+    display: none;
+  }
+
+  .upButton {
+    display: none;
+  }
+}
+
+/* Pour les écrans de moins de 480px (mobiles très petits) */
+@media (max-width: 480px) {
+  .sectionTitle {
+    font-size: 40px;
+  }
+
+  .leftText, .rightText {
+    width: 80%;
+    padding: 20px;
+
+    p {
+      font-size: 14px;
+      margin: 15px auto 0;
+    }
+  }
+
+  .contentContainer {
+    padding: 5px;
+  }
+
+  .imageContainer {
+    margin-top: 10px;
+    width: 80%;
+  }
+
+  .image {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .buttonContainer {
+    gap: 2rem;
+  }
+
+  .menuLink {
+    display: none;
+  }
+
+  .upButton {
+    display: none;
+  }
 }
 
 

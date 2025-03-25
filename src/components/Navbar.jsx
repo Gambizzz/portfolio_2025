@@ -3,34 +3,36 @@ import { useTranslation } from 'react-i18next';
 import styles from '../styles/components/Navbar.module.scss';
 
 const Navbar = () => {
-  const [isNavbarVisible, setIsNavbarVisible] = useState(true);
-  const [isButtonVisible, setIsButtonVisible] = useState(false);
-  const [lastScrollTop, setLastScrollTop] = useState(0);
-  const [isBackgroundVisible, setIsBackgroundVisible] = useState(false);
+  const [isNavbarVisible, setIsNavbarVisible] = useState(false);
+  const [activeLink, setActiveLink] = useState('');
   const { t, i18n } = useTranslation();
   const [language, setLanguage] = useState(i18n.language);
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollTop = window.scrollY;
-
-      if (scrollTop > lastScrollTop) {
-        setIsNavbarVisible(false);
-        setIsButtonVisible(true);
-      } else if (scrollTop < lastScrollTop) {
-        if (scrollTop <= 0) {
-          setIsNavbarVisible(true);
-          setIsButtonVisible(false);
-          setIsBackgroundVisible(false);
-        }
+      const nextSection = document.getElementById('next-section');
+      if (nextSection) {
+        setIsNavbarVisible(window.scrollY >= nextSection.offsetTop - 50);
       }
 
-      setLastScrollTop(scrollTop);
+      // Détecter les sections visibles et mettre à jour l'état du lien actif
+      const sections = ['hero', 'about', 'skills', 'projects'];
+      sections.forEach((sectionId) => {
+        const section = document.getElementById(sectionId);
+        if (section) {
+          const rect = section.getBoundingClientRect();
+          if (rect.top <= window.innerHeight / 2 && rect.bottom >= 0) {
+            console.log(`Section ${sectionId} est visible`);
+            setActiveLink(sectionId);
+          }
+        }
+      });
     };
 
     window.addEventListener('scroll', handleScroll);
+    handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [lastScrollTop]);
+  }, []);
 
   const handleLanguageToggle = () => {
     const newLang = language === 'en' ? 'fr' : 'en';
@@ -38,42 +40,39 @@ const Navbar = () => {
     setLanguage(newLang);
   };
 
-  const handleButtonClick = () => {
-    setIsNavbarVisible(!isNavbarVisible);
-    if (!isNavbarVisible) {
-      setIsBackgroundVisible(true);
-    }
-  };
-
   return (
-    <div>
-      <nav
-        className={`${styles.navbar} ${!isNavbarVisible ? styles.hidden : ''} ${isBackgroundVisible ? styles.background : ''}`}
-      >
-        <ul>
-          <li><a href="#hero">{t('Home')}</a></li>
-          <li><a href="#about">{t('About')}</a></li>
-          <li className={styles.logo}>
-            <img src="/images/initials.png" alt="Name logo" className={styles.icon} />
-          </li>
-          <li><a href="#projects">{t('Projects')}</a></li>
-          <li>
-            <button onClick={handleLanguageToggle} className={styles.languageToggle}>
-              {language === 'en' ? 'FR' : 'EN'}
-            </button>
-          </li>
-        </ul>
-      </nav>
-
-      <button
-        className={`${styles.showNavbarButton} ${isButtonVisible ? styles.visible : ''}`}
-        onClick={handleButtonClick}
-      >
-        <span className={styles.buttonText}>
-          {isNavbarVisible ? 'Hide' : 'Show'}
-        </span>
-      </button>
-    </div>
+    <nav className={`${styles.navbar} ${isNavbarVisible ? styles.visible : styles.hidden}`}>
+      <ul>
+        <li className={styles.logo}>
+          <img src="/images/initials.png" alt="Name logo" className={styles.icon} />
+        </li>
+        <li>
+          <a href="#hero" className={activeLink === 'hero' ? styles.active : ''}>
+            {t('Home')}
+          </a>
+        </li>
+        <li>
+          <a href="#about" className={activeLink === 'about' ? styles.active : ''}>
+            {t('About')}
+          </a>
+        </li>
+        <li>
+          <a href="#skills" className={activeLink === 'skills' ? styles.active : ''}>
+            {t('Skills')}
+          </a>
+        </li>
+        <li>
+          <a href="#projects" className={activeLink === 'projects' ? styles.active : ''}>
+            {t('Projects')}
+          </a>
+        </li>
+        <li>
+          <button onClick={handleLanguageToggle} className={styles.languageToggle}>
+            {language === 'en' ? 'FR' : 'EN'}
+          </button>
+        </li>
+      </ul>
+    </nav>
   );
 };
 

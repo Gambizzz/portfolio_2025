@@ -38,17 +38,22 @@
       margin-right: 4rem;
 
       a {
-        color: $nav-title-color;
+        color: #FF7E33;
         text-decoration: none;
         padding: 30px;
         font-size: 22px;
-        font-weight: bold;
-        cursor: none;
-        transition: transform 0.3s ease;
+        font-weight: medium;
+        cursor: pointer;
+        transition: transform 0.3s ease, color 0.3s ease;
       }
 
       &:hover {
         transform: scale(1.1);
+      }
+
+      & a.active {
+        color: #9E89B6;
+        font-weight: 600;
       }
     }
 
@@ -63,54 +68,7 @@
   }
 }
 
-.showNavbarButton {
-  position: fixed;
-  top: 20px;
-  left: 15px;
-  width: 35px;
-  height: 35px;
-  background-color: $nav-title-color;
-  border: none;
-  border-radius: 50%;
-  padding: 10px;
-  cursor: none;
-  z-index: 1001;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.5s ease, transform 0.3s ease;
 
-  &.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: -3.5px;
-    left: -3.5px;
-    width: 120%;
-    height: 120%;
-    border-radius: 50%;
-    border: 2px solid $cursor-color;
-    box-sizing: border-box;
-    z-index: -1;
-    transition: border 0.3s ease;
-  }
-
-  &:hover {
-    transform: scale(1.2);
-  }
-}
-
-.buttonText {
-  font-size: 0.75rem;
-  font-family: "Raleway", sans-serif;
-  color: white;
-}
 
 .languageToggle {
   display: flex;
@@ -119,13 +77,13 @@
   width: 50px;
   height: 50px;
   background-color: transparent;
-  border: 1px solid $nav-title-color;
+  border: 2px solid #9E89B6;
   border-radius: 50%;
   padding: 10px;
   font-size: 18px;
   cursor: none;
   font-weight: bold;
-  color: $nav-title-color;
+  color: #FF7E33;
   transition: transform 0.3s ease;
 
   &:hover {
@@ -137,28 +95,67 @@
 /* Responsive */
 @media (max-width: 768px) {
   .navbar {
-    height: 50px; /* Réduction de la hauteur de la navbar */
+    padding: 0.5rem;
+    background-color: #dfefb8;
+
+    ul {
+      justify-content: center;
+      gap: 40px;
+    }
+  
+    ul li {
+      margin-right: 0;
+    }
+  
+    ul li a {
+      font-size: 18px;
+      padding: 15px;
+    }
   }
 
-  .navbar ul {
-    flex-direction: row;
-    justify-content: space-around; /* Ajustement de l'alignement */
-    padding: 0;
+
+  .logo img {
+    max-height: 30px;
+    width: 45px;
+    margin-left: 0;
   }
 
-  .navbar ul li {
-    margin: 0px -15%;
-    margin-left: -23%;
-  }
-
-  .navbar .logo {
-    display: none;
+  .languageToggle {
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
   }
 }
 
-@media (max-width: 820px) {
-  .showNavbarButton {
-    top: 6.5%;
+@media (max-width: 480px) {
+  .navbar {
+    padding: 0.3rem;
+
+    ul {
+      justify-content: center;
+      gap: 5px;
+      margin-left: -4%;
+    }
+  
+    ul li {
+      margin: 0;
+    }
+  
+    ul li a {
+      font-size: 14px;
+      padding: 8px;
+    }
+  }
+
+  .logo img {
+    max-height: 25px;
+    width: 40px;
+  }
+
+  .languageToggle {
+    width: 35px;
+    height: 35px;
+    font-size: 14px;
   }
 }
 

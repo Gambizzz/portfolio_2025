@@ -34,10 +34,10 @@ Installation Steps :
 
 ```bash
 # Clone the repository
-git clone https://github.com/Gambizzz/portfolio-2024.git
+git clone https://github.com/Gambizzz/portfolio_2025.git
 
 # Navigate into the project directory
-cd portfolio-2024
+cd portfolio-2025
 
 # With npm
 npm install
