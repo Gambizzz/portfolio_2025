@@ -1,0 +1,53 @@
+@import '../../styles/variables.scss';
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@200&display=swap');
+
+.hero {
+  font-family: 'Raleway', sans-serif;
+  margin-top: 20vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  img {
+    width: 100%;
+    height: auto;
+    max-width: 1200px;
+    max-height: 700px;
+    object-fit: contain;
+    margin-top: -5%;
+
+    @media (max-width: 1023px) {
+      max-height: 750px;
+      margin-top: 4%;
+    }
+
+    @media (max-width: 768px) {
+      max-height: 700px;
+    }
+
+    @media (max-width: 480px) {
+      max-height: 400px;
+      margin-top: 15%;
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

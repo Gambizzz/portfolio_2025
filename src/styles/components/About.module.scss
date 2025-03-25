@@ -1,0 +1,152 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@200&display=swap');
+@import '../../styles/variables.scss';
+
+@font-face {
+  font-family: 'Title';
+  src: url('/fonts/Nectarine DEMO.ttf') format('truetype');
+}
+
+.about {
+  font-family: 'Raleway', sans-serif;
+  width: 100%;
+  padding: 0 2rem;
+  box-sizing: border-box;
+  cursor: none;
+  margin-top: 25vh;
+}
+
+.aboutTitle {
+  font-family: 'Title', sans-serif;
+  font-size: 5rem;
+  color: $nav-title-color;
+  margin-bottom: -2rem;
+  text-align: center;
+
+  @media (max-width: 480px) {
+    font-size: 4rem;
+    text-align: center;
+  }
+}
+
+.aboutLine {
+  font-family: 'Raleway', sans-serif;
+  font-size: 1.5rem;
+  text-align: center;
+  color: $text-color;
+
+  img {
+    width: 20%;
+    margin-left: 0.6rem;
+    margin-right: 0.6rem;
+
+    @media (max-width: 480px) {
+      width: 50%;
+    }
+
+    @media (max-width: 768px) {
+      width: 40%;
+    }
+
+    @media (max-width: 1024px) {
+      width: 30%;
+    }
+  }
+}
+
+
+/* SECTIONS */
+.section {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  margin: 1rem 0;
+  transition: transform 0.3s ease;
+}
+
+.section.active {
+  transform: scale(1.1);
+}
+
+.section:hover {
+  transform: scale(1.1);
+}
+
+.sectionNumber {
+  font-size: 3rem;
+  font-weight: bold;
+  color: $nav-title-color;
+  margin-bottom: 1rem;
+}
+
+.sectionContent {
+  width: 100%;
+}
+
+.sectionText {
+  font-size: 1.1rem;
+  color: $text-color;
+  line-height: 1.6;
+  text-align: justify;
+}
+
+.separator {
+  width: 100%;
+  border: none;
+  border-bottom: 0.5px solid $nav-title-color;
+  margin: 2rem 0;
+}
+
+
+/* CV BUTTONS */
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  margin-top: 4rem;
+
+  a {
+    text-decoration: none;
+  }
+}
+
+.btn {
+  border: none;
+  width: 12em;
+  height: 4em;
+  border-radius: 3em;
+  border: 1px solid $nav-title-color;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  background: none;
+  cursor: none;
+  transition: all 450ms ease-in-out;
+}
+
+.text {
+  font-weight: 400;
+  color: $nav-title-color;
+  font-size: medium;
+}
+
+.btn:hover {
+  background: linear-gradient(0deg,#b293f0,#b4a0f5);
+  box-shadow: inset 0px 1px 0px 0px rgba(255, 255, 255, 0.4),
+  inset 0px -4px 0px 0px rgba(249, 208, 253, 0.301),
+  0px 0px 0px 4px rgba(255, 225, 251, 0.586),
+  0px 0px 180px 0px #9b27f5;
+  transform: translateY(-2px);
+}
+
+.btn:hover .text {
+  color: white;
+}
+
+
+
+
+
+
+
+
