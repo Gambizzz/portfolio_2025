@@ -2,6 +2,7 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { AiOutlineArrowDown, AiOutlineArrowUp } from "react-icons/ai";
 import styles from '../styles/components/About.module.scss';
+import Image from "next/image";
 
 const About = () => {
   const { t } = useTranslation();
@@ -35,7 +36,7 @@ const About = () => {
         </div>
 
         <div className={styles.imageContainer}>
-          <img src="/images/imgAbout.png" alt="Image description" className={styles.image} />
+          <Image src="/images/imgAbout.png" alt="Image description" className={styles.image} />
         </div>
 
         <div className={styles.rightText}>

@@ -7,7 +7,7 @@ function MyApp({ Component, pageProps }) {
   return (
     <>
       <Head>
-        <link rel='icon' href='/images/favicon.png' />
+        <link rel="icon" type="image/x-icon" href="/favicon.ico" />
       </Head>
       <Component {...pageProps} />
       <CustomCursor />

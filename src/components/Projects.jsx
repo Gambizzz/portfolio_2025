@@ -4,7 +4,8 @@ import { ImCross } from "react-icons/im";
 import { AiOutlineArrowUp } from "react-icons/ai";
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import { IoIosMail } from "react-icons/io";
-import styles from "../styles/components/Projects.module.scss";  // Suppression du double import de styles
+import styles from "../styles/components/Projects.module.scss";
+import Image from "next/image";
 
 function ProjectItem({ project, onClick }) {
   return (
@@ -17,7 +18,7 @@ function ProjectItem({ project, onClick }) {
       </h2>
 
       <div className={styles.projectImageContainer}>
-        <img className={styles.projectImage} src={project.src} alt={project.title} />
+        <Image className={styles.projectImage} src={project.src} alt={project.title} />
       </div>
 
       <div className={styles.projectDescription}>
@@ -45,7 +46,7 @@ function ProjectModal({ project, onClose }) {
             <div key={index} className={styles.mediaWrapper}>
               <h3 className={styles.mediaTitle}>{media.title}</h3>
               {media.type === "image" && (
-                <img className={styles.modalImage} src={media.src} alt={media.title} />
+                <Image className={styles.modalImage} src={media.src} alt={media.title} />
               )}
               {media.type === "video" && media.src && (
                 <video className={styles.modalVideo} controls>

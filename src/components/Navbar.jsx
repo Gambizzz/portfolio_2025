@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import styles from '../styles/components/Navbar.module.scss';
+import Image from "next/image";
 
 const Navbar = () => {
   const [isNavbarVisible, setIsNavbarVisible] = useState(false);
@@ -44,7 +45,7 @@ const Navbar = () => {
     <nav className={`${styles.navbar} ${isNavbarVisible ? styles.visible : styles.hidden}`}>
       <ul>
         <li className={styles.logo}>
-          <img src="/images/initials.png" alt="Name logo" className={styles.icon} />
+          <Image src="/images/initials.png" alt="Name logo" className={styles.icon} />
         </li>
         <li>
           <a href="#hero" className={activeLink === 'hero' ? styles.active : ''}>

@@ -1,6 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import styles from '../styles/components/Hero.module.scss';
+import Image from "next/image";
 
 const Hero = () => {
   const { t } = useTranslation();
@@ -15,7 +16,7 @@ const Hero = () => {
   return (
     <section id="hero" className={styles.hero}>
       {/* Logo SVG */}
-      <img src="/images/logo.svg" alt="Logo" className={styles.heroSvg} />
+      <Image src="/images/logo.svg" alt="Logo" className={styles.heroSvg} />
 
       {/* Cercle avec les textes */}
       <div className={styles.circleText}>
