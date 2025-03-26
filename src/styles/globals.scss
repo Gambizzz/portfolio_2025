@@ -27,5 +27,9 @@ html, body {
   html, body {
     overflow: auto; // Réactive le scroll sur mobiles/tablettes
   }
+
+  #projects {
+    overflow-y: auto;
+  }
 }
 
