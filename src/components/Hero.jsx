@@ -16,7 +16,7 @@ const Hero = () => {
   return (
     <section id="hero" className={styles.hero}>
       {/* Logo SVG */}
-      <Image src="/images/logo.svg" alt="Logo" className={styles.heroSvg} />
+      <Image src="/logo.svg" alt="Logo" className={styles.heroSvg} />
 
       {/* Cercle avec les textes */}
       <div className={styles.circleText}>
